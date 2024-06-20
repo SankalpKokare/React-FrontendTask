@@ -1,0 +1,22 @@
+.counter-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 10px;
+  z-index: 0;
+}
+
+.counter-Container h1{
+    margin: 2px;
+    font-family: sans-serif; 
+}
+
+.background-colored-div{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: lightblue;
+  z-index: -1;
+}
