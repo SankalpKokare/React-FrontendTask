@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useSpring, animated } from "react-spring";
 import "./Counter.css";
 
 function Counter() {
@@ -14,6 +15,11 @@ function Counter() {
   function reset(){
     setCount(0);
   }
+
+  const { height } = useSpring({
+    height: `${count}%`,
+    config: { tension: 120, friction: 30 },
+  });
 
   return (
     <div className="counter-Container">
@@ -38,6 +44,10 @@ function Counter() {
           -
         </Button>
       </div>
+      <animated.div
+        className="background-colored-div"
+        style={{ height }}
+      ></animated.div>
     </div>
   );
 }
