@@ -1,9 +1,12 @@
-import './App.css'
+import "./App.css";
+import Counter from "./Components/Counter/Counter";
 
 function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <Counter />
+    </div>
+  );
 }
 
-export default App
+export default App;
