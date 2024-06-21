@@ -1,10 +1,24 @@
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import "./Counter.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setCounterValue } from "./CounterSlice";
 
 function Counter() {
   const [count, setCount] = useState(0);
+
+  const dispatch = useDispatch();
+  const value = useSelector((state: any) => state.counter.value);
+
+  useEffect(() => {
+    setCount(value);
+  }, []);
+
+  useEffect(() => {
+    dispatch(setCounterValue(count));
+  }, [count]);
+
 
   function increment() {
     setCount(count + 1);
