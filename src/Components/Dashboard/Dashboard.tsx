@@ -1,21 +1,21 @@
 import { useSelector } from "react-redux";
 import Counter from "../Counter/Counter";
 import "./Dashboard.css";
-import { useEffect } from "react";
+import CountChart from "../CountChart/CountChart";
 
 export default function Dashboard() {
-  const countHistory = () => useSelector((state: any) => state.counter.history);
+  const countHistory = useSelector((state: any) => state.counter.history);
 
-  useEffect(() => {
-    console.log(countHistory);
-  }, [countHistory]);
+  console.log(countHistory);
 
   return (
     <div className="dashboard-container">
       <div className="dashboard-counter">
         <Counter />
       </div>
-      <div className="dashboard-charts">charts</div>
+      <div className="dashboard-charts">
+        <CountChart />
+      </div>
     </div>
   );
 }
