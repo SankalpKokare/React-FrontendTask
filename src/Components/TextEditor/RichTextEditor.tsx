@@ -60,7 +60,7 @@ function RichTextEditor() {
         className="editor-input"
         modules={modules}
       />
-      <Button onClick={handleSave} variant="outlined" color="primary" size="small">Save</Button>
+      <Button onClick={handleSave} variant="outlined" color="primary" size="small" disabled={!isUnsave}>Save</Button>
     </div>
     </div>
   );

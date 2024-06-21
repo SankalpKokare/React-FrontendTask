@@ -21,16 +21,19 @@ function Counter() {
 
 
   function increment() {
-    setCount(count + 1);
-    updateValue()
+    const newCount = count+1
+    setCount(newCount)
+    dispatch(setCounterValue(newCount));
+
   }
   function decrement(){
-    setCount(count - 1);
-    updateValue()
+    const newCount = count-1
+    setCount(newCount);
+    dispatch(setCounterValue(newCount));
   }
   function reset(){
     setCount(0);
-    updateValue()
+    dispatch(setCounterValue(0));
   }
 
   const { height } = useSpring({
