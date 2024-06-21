@@ -1,9 +1,21 @@
-import './App.css'
+import "./App.css";
+import Counter from "./Components/Counter/Counter";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserData from "./Components/UserData/UserData";
+import RichTextEditor from "./Components/TextEditor/RichTextEditor";
+import Navbar from "./Components/NavigationBar/Navbar";
 
 function App() {
   return (
-    <div>App</div>
-  )
+    <BrowserRouter>
+        <Navbar/>
+      <Routes>
+        <Route path="/" element={<Counter />} />
+        <Route path="/userdata" element={<UserData />} />
+        <Route path="/texteditor" element={<RichTextEditor />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
