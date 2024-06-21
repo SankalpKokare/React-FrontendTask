@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFormData } from "./FormSlice";
 import { TextField, Button } from "@mui/material";
@@ -11,9 +11,12 @@ const UserData = () => {
     email: "",
   });
 
+  const [isSaved, setIsSaved] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleChange = (e: any) => {
+    setIsSaved(false)
     const { name, value } = e.target;
     setFormDataState((prev) => ({
       ...prev,
@@ -24,7 +27,23 @@ const UserData = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     dispatch(setFormData(formData));
+    setIsSaved(true);
   };
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (!isSaved) {
+        const message = "You have unsaved changes";
+        e.returnValue = message;
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isSaved]);
 
   return (
     <div className="form-container">
@@ -38,6 +57,7 @@ const UserData = () => {
             onChange={handleChange}
             fullWidth
             margin="normal"
+            required
           />
           <TextField
             label="Last Name"
@@ -46,6 +66,7 @@ const UserData = () => {
             onChange={handleChange}
             fullWidth
             margin="normal"
+            required
           />
           <TextField
             label="Phone Number"
@@ -54,6 +75,7 @@ const UserData = () => {
             onChange={handleChange}
             fullWidth
             margin="normal"
+            required
           />
           <TextField
             label="Email"
@@ -62,6 +84,7 @@ const UserData = () => {
             onChange={handleChange}
             fullWidth
             margin="normal"
+            required
           />
           <Button
             type="submit"
@@ -70,7 +93,7 @@ const UserData = () => {
             fullWidth
             sx={{ mt: 2 }}
           >
-            Submit
+            Save
           </Button>
         </form>
       </div>
