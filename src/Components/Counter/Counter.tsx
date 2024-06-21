@@ -15,10 +15,6 @@ function Counter() {
     setCount(value);
   }, []);
 
-  function updateValue(){
-    dispatch(setCounterValue(count));
-  }
-
 
   function increment() {
     const newCount = count+1
