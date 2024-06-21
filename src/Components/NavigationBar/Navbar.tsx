@@ -1,7 +1,5 @@
-import React from "react";
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // Importing useNavigate from react-router-dom
-import "./Navbar.css";
 
 function Navbar() {
   const navigate = useNavigate(); // Using useNavigate hook from react-router-dom
