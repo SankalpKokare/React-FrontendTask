@@ -1,13 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface CounterState {
+    value: number;
+    countHistory: number[];
+  }
+
+  
+const initialState: CounterState = {
+    value: 0,
+    countHistory: [],
+  };
 
 const counterSlice = createSlice({
   name: "counter",
-  initialState: {
-    value: 0,
-  },
+  initialState,
   reducers: {
-    setCounterValue: (state, action) => {
+    setCounterValue: (state, action : PayloadAction<number>) => {
       state.value = action.payload;
+      state.countHistory.push(action.payload);
     },
   },
 });
