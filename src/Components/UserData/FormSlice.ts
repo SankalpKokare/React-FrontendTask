@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const getInitialState = () => {
-  const storedFormData = localStorage.getItem("formData");
+  const storedFormData = localStorage.getItem("UserData");
   const storedEditorData = localStorage.getItem("editorData");
   return {
-    data: storedFormData
+    UserData: storedFormData
       ? JSON.parse(storedFormData)
       : {
           userDate: { firstName: "", lastName: "", phoneNumber: "", email: "" },
@@ -18,16 +18,16 @@ export const formSlice = createSlice({
   initialState: getInitialState(),
   reducers: {
     setFormData: (state, action) => {
-      state.data = action.payload;
-      localStorage.setItem("formData", JSON.stringify(state.data));
-      localStorage.setItem("editorData", JSON.stringify(state.data));
+      state.UserData = action.payload;
+      localStorage.setItem("UserData", JSON.stringify(state.UserData));
+      localStorage.setItem("editorData", JSON.stringify(state.UserData));
     },
     setRichText: (state, action) => {
       const cleanedData = action.payload.replace(/<\/?[^>]+(>|$)/g, "");
       state.editorData = action.payload.replace(/<\/?p>/g, "");
-      state.data = JSON.parse(cleanedData);
+      state.UserData = JSON.parse(cleanedData);
       localStorage.setItem("editorData", state.editorData);
-      localStorage.setItem("formData", cleanedData);
+      localStorage.setItem("UserData", cleanedData);
     },
   },
 });
