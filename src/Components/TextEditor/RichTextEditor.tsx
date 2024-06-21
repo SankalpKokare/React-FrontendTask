@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import "./RichTextEditor.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setRichText } from "../UserData/FormSlice";
+import { Button } from "@mui/material";
 
 function RichTextEditor() {
   const [value, setValue] = useState("");
@@ -33,6 +34,7 @@ function RichTextEditor() {
 
   return (
     <div className="editor-container">
+      <div className="editor">
       <ReactQuill
         theme="snow"
         value={value}
@@ -40,7 +42,8 @@ function RichTextEditor() {
         className="editor-input"
         modules={modules}
       />
-      <button onClick={handleSave}>Save</button>
+      <Button onClick={handleSave} variant="outlined" color="primary" size="small">Save</Button>
+    </div>
     </div>
   );
 }
