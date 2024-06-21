@@ -3,10 +3,12 @@ import Counter from "./Components/Counter/Counter";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserData from "./Components/UserData/UserData";
 import RichTextEditor from "./Components/TextEditor/RichTextEditor";
+import Navbar from "./Components/NavigationBar/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
+        <Navbar/>
       <Routes>
         <Route path="/" element={<Counter />} />
         <Route path="/userdata" element={<UserData />} />

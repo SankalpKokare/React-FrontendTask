@@ -19,6 +19,7 @@ export const formSlice = createSlice({
   reducers: {
     setFormData: (state, action) => {
       state.UserData = action.payload;
+      state.editorData = JSON.stringify(action.payload);
       localStorage.setItem("UserData", JSON.stringify(state.UserData));
       localStorage.setItem("editorData", JSON.stringify(state.UserData));
     },
