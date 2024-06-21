@@ -22,6 +22,7 @@ function Counter() {
   });
 
   return (
+    <div className="counter">
     <div className="counter-Container">
       <h1>{count}</h1>
       <h1>Counter</h1>
@@ -29,16 +30,30 @@ function Counter() {
         <Button
           variant="outlined"
           color="primary"
+          sx={{
+            '&:hover': {
+              backgroundColor: "white",
+            },
+          }}
           onClick={increment}
         >
           +
         </Button>
-        <Button variant="outlined" color="primary" onClick={reset}>
+        <Button variant="outlined" color="primary" onClick={reset}      sx={{
+            '&:hover': {
+              backgroundColor: "white",
+            },
+          }}>
           Reset
         </Button>
         <Button
           variant="outlined"
           color="primary"
+          sx={{
+            '&:hover': {
+              backgroundColor: "white",
+            },
+          }}
           onClick={decrement}
         >
           -
@@ -48,6 +63,7 @@ function Counter() {
         className="background-colored-div"
         style={{ height }}
       ></animated.div>
+     </div>
     </div>
   );
 }
