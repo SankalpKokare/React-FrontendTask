@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const getInitialState = () => {
   const storedFormData = localStorage.getItem("UserData");
@@ -7,7 +8,13 @@ const getInitialState = () => {
     UserData: storedFormData
       ? JSON.parse(storedFormData)
       : {
-          userDate: { firstName: "", lastName: "", phoneNumber: "", email: "" },
+          userData: {
+            id: uuidv4(),
+            firstName: "",
+            lastName: "",
+            phoneNumber: "",
+            email: "",
+          },
         },
     editorData: storedEditorData ? storedEditorData : "",
   };
@@ -18,8 +25,13 @@ export const formSlice = createSlice({
   initialState: getInitialState(),
   reducers: {
     setFormData: (state, action) => {
-      state.UserData = action.payload;
-      state.editorData = JSON.stringify(action.payload);
+      state.UserData = {
+        userData: {
+          ...action.payload,
+          id: uuidv4(),
+        },
+      };
+      state.editorData = JSON.stringify(state.UserData);
       localStorage.setItem("UserData", JSON.stringify(state.UserData));
       localStorage.setItem("editorData", JSON.stringify(state.UserData));
     },

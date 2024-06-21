@@ -5,7 +5,7 @@ function Navbar() {
   const navigate = useNavigate(); // Using useNavigate hook from react-router-dom
 
   return (
-    <AppBar position="sticky" variant="elevation" className="navbar">
+    <AppBar position="sticky" variant="elevation" className="navbar" sx={{ borderRadius: '10px' }}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           My App
