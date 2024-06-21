@@ -38,9 +38,13 @@ export const formSlice = createSlice({
     setRichText: (state, action) => {
       const cleanedData = action.payload.replace(/<\/?[^>]+(>|$)/g, "");
       state.editorData = action.payload.replace(/<\/?p>/g, "");
-      state.UserData = JSON.parse(cleanedData);
+      try {
+        state.UserData = JSON.parse(cleanedData);
+        localStorage.setItem("UserData", cleanedData);
+      } catch (e: any) {
+        console.log(e.message);
+      }
       localStorage.setItem("editorData", state.editorData);
-      localStorage.setItem("UserData", cleanedData);
     },
   },
 });
