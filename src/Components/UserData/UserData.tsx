@@ -4,21 +4,23 @@ import { setFormData } from "./FormSlice";
 import { TextField, Button } from "@mui/material";
 import "./UserData.css";
 const UserData = () => {
-  const [formData, setFormDataState] = useState({
+  const initialFormData = {
     firstName: "",
     lastName: "",
     phoneNumber: "",
     email: "",
-  });
+  };
+
+  const [formData, setFormDataState] = useState(initialFormData);
 
   const [isSaved, setIsSaved] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleChange = (e: any) => {
-    setIsSaved(false)
+    setIsSaved(false);
     const { name, value } = e.target;
-    setFormDataState((prev) => ({
+    setFormDataState((prev:any) => ({
       ...prev,
       [name]: value,
     }));
@@ -28,6 +30,7 @@ const UserData = () => {
     e.preventDefault();
     dispatch(setFormData(formData));
     setIsSaved(true);
+    setFormDataState(initialFormData);
   };
 
   useEffect(() => {
@@ -35,6 +38,7 @@ const UserData = () => {
       if (!isSaved) {
         const message = "You have unsaved changes";
         e.returnValue = message;
+        return message;
       }
     };
 
@@ -48,7 +52,7 @@ const UserData = () => {
   return (
     <div className="form-container">
       <div className="form-content">
-        <h1>Contact Form</h1>
+        <h1>User Data Form</h1>
         <form onSubmit={handleSubmit}>
           <TextField
             label="First Name"
