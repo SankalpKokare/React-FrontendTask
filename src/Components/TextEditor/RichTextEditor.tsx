@@ -8,7 +8,10 @@ import { Button } from "@mui/material";
 
 function RichTextEditor() {
   const [value, setValue] = useState("");
+  const [isUnsave , setisUnsave] = useState(false);
   const dispatch = useDispatch();
+
+  
 
   const formData = useSelector((state: any) => state.form.editorData);
 
@@ -25,12 +28,27 @@ function RichTextEditor() {
 
   function handleSave() {
     dispatch(setRichText(value));
+    setisUnsave(false);
   }
 
   function handleChange(value: string) {
     setValue(value);
-    console.log(value);
+    setisUnsave(true);
   }
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (isUnsave) {
+        event.preventDefault();
+        event.returnValue = "Change are not saved"; 
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isUnsave]);
 
   return (
     <div className="editor-container">
