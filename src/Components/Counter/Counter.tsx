@@ -15,19 +15,21 @@ function Counter() {
     setCount(value);
   }, []);
 
-  useEffect(() => {
-    dispatch(setCounterValue(count));
-  }, [count]);
-
 
   function increment() {
-    setCount(count + 1);
+    const newCount = count+1
+    setCount(newCount)
+    dispatch(setCounterValue(newCount));
+
   }
   function decrement(){
-    setCount(count - 1);
+    const newCount = count-1
+    setCount(newCount);
+    dispatch(setCounterValue(newCount));
   }
   function reset(){
     setCount(0);
+    dispatch(setCounterValue(0));
   }
 
   const { height } = useSpring({
