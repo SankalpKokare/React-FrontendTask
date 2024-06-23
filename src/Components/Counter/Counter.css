@@ -41,3 +41,19 @@
   z-index: -1;
   border-radius: inherit;
 }
+
+@media only screen and (max-width: 767px) {
+  .counter-Container{
+    width: 80%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 350px;
+    gap: 5px
+  }
+
+  .counter-buttons-container{
+    display: flex;
+    gap: 5px;
+  }
+
+}

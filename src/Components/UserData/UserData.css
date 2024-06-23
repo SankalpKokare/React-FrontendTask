@@ -24,3 +24,13 @@
   text-align: center;
   font-weight: lighter;
 }
+
+@media only screen and (max-width: 767px) {
+
+  .form-content {
+    width: 70%;    
+    box-shadow: 10px 10px 10px lightblue;
+    padding: 30px 30px;
+  }
+
+}

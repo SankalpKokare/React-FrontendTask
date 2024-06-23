@@ -6,7 +6,7 @@
 
 .dashboard-counter{
     width: 50%;
-    border: 1px solid black;
+    border-right: 1px solid grey;
     overflow: hidden;
     min-width: 400px;
 }
@@ -17,3 +17,33 @@
     justify-content: center;
     align-items: center;    
 }
+
+@media only screen and (max-width: 767px) {
+
+    .dashboard-container{
+        flex-direction: column;
+        height: auto;
+        border-radius: 40px;
+        margin-top: 100px;
+    }
+
+    .dashboard-counter{
+        width: 100%;
+        border: none;
+        height: 70%;
+    }
+
+    .dashboard-container .counter{
+        height: 40%;
+    }
+
+    .dashboard-container .counter-Container{
+        width: 70%;
+        margin: 20px;
+    }
+
+    .dashboard-charts{
+        width: 100%;
+    }
+      
+  }
